@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宿 · Su, Where the Moon Rests</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --pink: #FF2D7F;
+    --bg:   #050508;
+    --surface: #0c0c10;
+    --dim:  #3a3a44;
+    --muted:#777;
+    --text: #d8d8e0;
+    --border: rgba(255,45,127,0.18);
+  }
+  html, body {
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+    pointer-events: none;
+    z-index: 100;
+  }
+  .hud-corner {
+    position: fixed;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    pointer-events: none;
+    z-index: 50;
+  }
+  .hud-tl { top: 1.25rem; left: 1.25rem; }
+  .hud-tr { top: 1.25rem; right: 1.25rem; text-align: right; }
+  .hud-bl { bottom: 1.25rem; left: 1.25rem; }
+  .hud-br { bottom: 1.25rem; right: 1.25rem; text-align: right; }
+
+  main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .tag::before, .tag::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .title-zh {
+    font-size: clamp(4rem, 12vw, 7rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .title-en {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .title-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: italic;
+    font-size: 0.65rem;
+    color: var(--dim);
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: 0.05em;
+  }
+
+  .files {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: min(480px, 90vw);
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--dim);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    gap: 1rem;
+  }
+  .file-link:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 20px rgba(255,45,127,0.08);
+    background: var(--surface);
+  }
+  .file-info { flex: 1; }
+  .file-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.25rem;
+  }
+  .file-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .file-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--pink);
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .file-link:hover .file-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+</style>
+</head>
+<body>
+
+<div class="hud-corner hud-tl">SACRED TREE · 신목 · 神木<br>SU XR · 宿</div>
+<div class="hud-corner hud-tr">二十八宿<br>LUNAR MANSION SYSTEM</div>
+<div class="hud-corner hud-bl">gelora-xr.xyz</div>
+<div class="hud-corner hud-br">BIN YOUN · 2025–2026</div>
+
+<main>
+  <div class="tag">Su · Where the Moon Rests</div>
+  <div class="title-zh">宿</div>
+  <div class="title-en">Celestial Station · XR Installation</div>
+  <div class="title-sub">"One Night the Moon Stayed. That Was Yours."</div>
+
+  <div class="files">
+    <a class="file-link" href="tools/mansion-finder.html">
+      <div class="file-info">
+        <div class="file-name">二十八宿 · Mansion Finder</div>
+        <div class="file-desc">// enter birthdate → locate your celestial station</div>
+      </div>
+      <div class="file-arrow">→</div>
+    </a>
+    <a class="file-link" href="pitch/final-pitch.html">
+      <div class="file-info">
+        <div class="file-name">Final Pitch · HCMC 2026</div>
+        <div class="file-desc">// installation layout · lighting · production specs</div>
+      </div>
+      <div class="file-arrow">→</div>
+    </a>
+  </div>
+</main>
+
+</body>
+</html>
