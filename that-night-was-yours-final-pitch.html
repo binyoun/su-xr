@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Su, Where the Moon Rests · Final Pitch</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #f6f3ee;
+  --ink: #1a1714;
+  --muted: #7a7570;
+  --rule: #d4cfc8;
+  --accent: #FF2D7F;
+  --east:   #2e8c52;
+  --south:  #b03030;
+  --west:   #888898;
+  --north:  #2a44aa;
+  --center: #a07820;
+}
+html, body { background: var(--bg); color: var(--ink); }
+body {
+  font-family: 'DM Mono', monospace;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+}
+
+/* COVER */
+.cover {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+.cover-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cover-right {
+  font-size: 0.6rem;
+  color: var(--muted);
+  line-height: 2;
+  text-align: right;
+}
+.cover-zh {
+  font-family: 'Crimson Pro', serif;
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.cover-short {
+  font-family: 'Crimson Pro', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+.cover-full {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+.cover-poetic {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* SECTIONS */
+section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* DIAGRAM */
+.diagram {
+  background: #eeebe5;
+  border: 1px solid var(--rule);
+  margin-bottom: 1.5rem;
+}
+
+/* META + MATERIALS */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  border: 1px solid var(--rule);
+  margin-bottom: 0.75rem;
+}
+.meta-key {
+  font-size: 0.54rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+}
+.meta-val {
+  font-size: 0.72rem;
+  line-height: 1.7;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+}
+.meta-key:last-of-type,
+.meta-val:last-of-type { border-bottom: none; }
+
+.mat-list { list-style: none; }
+.mat-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.48rem 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+.mat-list li:first-child { border-top: 1px solid var(--rule); }
+.mat-note { color: var(--muted); font-size: 0.6rem; white-space: nowrap; align-self: center; }
+
+/* CAPTION BOX */
+.caption-box {
+  border: 1px solid var(--ink);
+  padding: 2rem 2.2rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.caption-box-label {
+  position: absolute;
+  top: -0.55rem;
+  left: 1.2rem;
+  background: var(--bg);
+  padding: 0 0.4rem;
+  font-size: 0.54rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.caption-box p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+.caption-credit {
+  font-size: 0.62rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  line-height: 1.9;
+}
+
+/* SAFETY NOTE */
+.safety {
+  border-left: 2px solid var(--accent);
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.68rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.safety strong {
+  font-weight: 400;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.58rem;
+}
+
+/* LIGHTING GRID */
+.light-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 0.75rem;
+}
+.light-cell {
+  background: var(--bg);
+  padding: 0.9rem 1rem;
+}
+.light-cell-label {
+  font-size: 0.54rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+.light-cell-val {
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* FOOTER */
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+@media print {
+  body { max-width: 100%; padding: 1.2cm 2cm; font-size: 90%; }
+  section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-tag">Final Submission Pitch · Clouds upon the Tree · Quán Nghệ · HCMC 2026</div>
+    <div class="cover-right">
+      Bin Youn<br>
+      RMIT University Vietnam<br>
+      gelora-xr.xyz
+    </div>
+  </div>
+  <div class="cover-zh">宿</div>
+  <div class="cover-short">Su, Where the Moon Rests</div>
+  <div class="cover-full">One Night the Moon Stayed. That Was Yours.</div>
+  <div class="cover-poetic">Where the Moon Slept</div>
+</div>
+
+<!-- FLOOR PLAN -->
+<section>
+  <div class="section-label">Installation Layout · Ground Floor · 326 × 328.5 cm · Ceiling 310 cm</div>
+
+  <div class="safety">
+    <strong>Safety note</strong> · Staircase zone kept entirely clear. All stools, fabric, and lighting equipment contained within the upper zone of the room. No materials extend beyond the safety boundary marked below. Five stools arranged in quincunx at 110 cm radius — south stool maintains minimum 60 cm clearance from stair edge.
+  </div>
+
+  <div class="diagram">
+    <svg width="100%" viewBox="0 0 860 640" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- ── ROOM SHELL ── -->
+      <!-- Scale: roughly 1cm = 1.5px, so 326cm = 489px, 328.5cm = 493px -->
+      <!-- Room upper section: 489px wide × 493px tall -->
+      <!-- Centered in SVG width 860px: left edge at (860-489)/2 = 185.5, use 186 -->
+
+      <!-- outer walls -->
+      <rect x="186" y="30" width="489" height="493" rx="0"
+            fill="#f0ece6" stroke="#1a1714" stroke-width="3"/>
+
+      <!-- staircase structure (lower portion) -->
+      <!-- stair landing block: 199.5cm = ~299px wide, positioned left of center -->
+      <!-- stair steps below landing -->
+      <!-- The black mass from the plan -->
+      <rect x="186" y="373" width="299" height="75" fill="#1a1714"/>
+      <!-- stair treads -->
+      <rect x="186" y="448" width="345" height="18" fill="#1a1714"/>
+      <rect x="186" y="466" width="345" height="18" fill="#f0ece6" stroke="#1a1714" stroke-width="1"/>
+      <rect x="186" y="484" width="345" height="18" fill="#1a1714"/>
+      <rect x="186" y="502" width="345" height="18" fill="#f0ece6" stroke="#1a1714" stroke-width="1"/>
+      <rect x="186" y="520" width="375" height="3" fill="#1a1714"/>
+
+      <!-- door/opening top -->
+      <rect x="254" y="30" width="90" height="6" fill="#1a1714"/>
+
+      <!-- ── DIMENSION LABELS ── -->
+      <text x="430" y="22" text-anchor="middle" font-family="DM Mono,monospace" font-size="10" fill="#1a1714">326 cm</text>
+      <text x="170" y="280" text-anchor="middle" font-family="DM Mono,monospace" font-size="10" fill="#1a1714" transform="rotate(-90 170 280)">328.5 cm</text>
+      <text x="690" y="280" text-anchor="middle" font-family="DM Mono,monospace" font-size="10" fill="#1a1714" transform="rotate(90 690 280)">328.5 cm</text>
+      <text x="690" y="468" text-anchor="middle" font-family="DM Mono,monospace" font-size="10" fill="#1a1714" transform="rotate(90 690 468)">180 cm</text>
+      <text x="360" y="536" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1a1714">363 cm</text>
+      <text x="262" y="402" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#f6f3ee">199.5 cm</text>
+
+      <!-- ── SAFETY BOUNDARY LINE ── -->
+      <line x1="186" y1="373" x2="675" y2="373"
+            stroke="#FF2D7F" stroke-width="1.2" stroke-dasharray="8 4"/>
+      <text x="688" y="377" font-family="DM Mono,monospace" font-size="8" fill="#FF2D7F">safety boundary</text>
+      <text x="688" y="388" font-family="DM Mono,monospace" font-size="8" fill="#FF2D7F">stair zone below</text>
+
+      <!-- ── INSTALLATION CENTER ──
+           Room center X: 186 + 489/2 = 430.5 → use 431
+           Upper zone height: 373 - 30 = 343px
+           Center Y in upper zone: 30 + 343/2 = 201.5 → use 200
+           Radius: 110cm = 165px … too large for 343px depth
+           Let's use 100cm = 150px
+           But 150px radius × 2 = 300px diameter — within 489px width ✓
+           South stool Y: 200 + 150 = 350, safety at 373 → 23px = ~15cm clearance
+           That's tight. Use 130px radius (87cm).
+           South: 200 + 130 = 330. 373 - 330 = 43px = ~29cm clearance. Better.
+           Actually let me push center northward a bit.
+           Center Y: 30 + 180 = 210. South: 210 + 130 = 340. 373-340 = 33px = ~22cm clearance.
+           Center Y: 30 + 160 = 190. South: 190 + 130 = 320. 373-320 = 53px = ~35cm clearance. Good.
+      -->
+
+      <!-- stool positions: cx=431, cy=190, r=130px (~87cm) -->
+      <!-- North: cy=190-130=60 — too close to wall (wall at y=30, that's only 30px=20cm) -->
+      <!-- Let's put center at cy=210, r=110px (~73cm) -->
+      <!-- North: 210-110=100. 100-30=70px=47cm from back wall. Fine. -->
+      <!-- South: 210+110=320. 373-320=53px=35cm clearance. Fine. -->
+      <!-- East: 431+110=541. 675-541=134px=89cm from right wall. Fine. -->
+      <!-- West: 431-110=321. 321-186=135px=90cm from left wall. Fine. -->
+
+      <!-- FABRIC FORMATION: organic, all fabrics drift inward to center -->
+      <!-- EAST green: drifts inward from right stool -->
+      <path d="M541 200 Q496 192 460 196 Q438 200 432 208 Q426 217 430 226 Q434 234 454 236 Q480 240 510 228 Q530 220 538 210 Q542 206 541 200 Z"
+            fill="#2e8c52" opacity="0.2"/>
+      <path d="M541 200 Q496 192 460 196 Q438 200 432 208 Q426 217 430 226 Q434 234 454 236 Q480 240 510 228 Q530 220 538 210 Q542 206 541 200 Z"
+            fill="none" stroke="#2e8c52" stroke-width="1.2" opacity="0.45"/>
+      <path d="M524 226 Q490 232 462 234 Q448 236 440 228"
+            fill="none" stroke="#2e8c52" stroke-width="6" stroke-linecap="round" opacity="0.1"/>
+
+      <!-- WEST white: drifts inward from left stool -->
+      <path d="M321 200 Q366 192 402 196 Q422 200 428 208 Q434 217 430 226 Q426 234 406 236 Q380 240 350 228 Q330 220 324 210 Q320 206 321 200 Z"
+            fill="#888898" opacity="0.2"/>
+      <path d="M321 200 Q366 192 402 196 Q422 200 428 208 Q434 217 430 226 Q426 234 406 236 Q380 240 350 228 Q330 220 324 210 Q320 206 321 200 Z"
+            fill="none" stroke="#888898" stroke-width="1.2" opacity="0.45"/>
+      <path d="M338 226 Q368 232 398 234 Q414 236 424 228"
+            fill="none" stroke="#888898" stroke-width="6" stroke-linecap="round" opacity="0.1"/>
+
+      <!-- NORTH blue: drifts inward from top -->
+      <path d="M422 100 Q414 142 412 176 Q410 194 420 204 Q428 212 438 210 Q448 208 450 198 Q454 178 450 152 Q446 124 442 100 Z"
+            fill="#2a44aa" opacity="0.2"/>
+      <path d="M422 100 Q414 142 412 176 Q410 194 420 204 Q428 212 438 210 Q448 208 450 198 Q454 178 450 152 Q446 124 442 100 Z"
+            fill="none" stroke="#2a44aa" stroke-width="1.2" opacity="0.45"/>
+      <path d="M416 130 Q412 164 412 184 Q412 198 420 206"
+            fill="none" stroke="#2a44aa" stroke-width="6" stroke-linecap="round" opacity="0.1"/>
+
+      <!-- SOUTH red: drifts inward (short — safety clearance) -->
+      <path d="M422 320 Q414 298 412 280 Q410 264 420 255 Q428 248 438 250 Q448 253 450 267 Q454 284 450 304 Q446 316 442 320 Z"
+            fill="#b03030" opacity="0.2"/>
+      <path d="M422 320 Q414 298 412 280 Q410 264 420 255 Q428 248 438 250 Q448 253 450 267 Q454 284 450 304 Q446 316 442 320 Z"
+            fill="none" stroke="#b03030" stroke-width="1.2" opacity="0.45"/>
+      <path d="M415 308 Q412 288 412 270 Q412 256 420 250"
+            fill="none" stroke="#b03030" stroke-width="6" stroke-linecap="round" opacity="0.1"/>
+
+      <!-- YELLOW center: SPIRAL COIL around center stool (cx=431, cy=210) -->
+      <!-- outer glow pool -->
+      <path d="M431 178 Q458 174 476 186 Q494 198 494 216 Q494 236 478 250 Q460 264 438 264 Q414 264 398 250 Q382 236 382 216 Q382 194 400 184 Q416 172 431 178 Z"
+            fill="#a07820" opacity="0.07"/>
+      <!-- spiral ring 1 — outermost -->
+      <path d="M431 184 Q455 180 470 192 Q485 204 485 220 Q485 238 470 250 Q452 262 432 261 Q410 260 396 248 Q382 234 384 216 Q386 196 402 186 Q416 176 431 184"
+            fill="none" stroke="#a07820" stroke-width="7" stroke-linecap="round" opacity="0.12"/>
+      <path d="M431 184 Q455 180 470 192 Q485 204 485 220 Q485 238 470 250 Q452 262 432 261 Q410 260 396 248 Q382 234 384 216 Q386 196 402 186 Q416 176 431 184"
+            fill="none" stroke="#a07820" stroke-width="1.4" stroke-linecap="round" opacity="0.35"/>
+      <!-- spiral ring 2 -->
+      <path d="M433 192 Q452 190 463 200 Q474 210 473 224 Q472 238 460 246 Q446 254 432 252 Q416 250 408 240 Q399 228 402 214 Q405 200 418 193 Q425 190 433 192"
+            fill="none" stroke="#a07820" stroke-width="5" stroke-linecap="round" opacity="0.18"/>
+      <path d="M433 192 Q452 190 463 200 Q474 210 473 224 Q472 238 460 246 Q446 254 432 252 Q416 250 408 240 Q399 228 402 214 Q405 200 418 193 Q425 190 433 192"
+            fill="none" stroke="#a07820" stroke-width="1.1" stroke-linecap="round" opacity="0.44"/>
+      <!-- spiral ring 3 -->
+      <path d="M432 200 Q446 198 454 206 Q462 214 461 225 Q460 237 450 243 Q438 249 426 247 Q413 244 408 233 Q402 222 406 211 Q410 200 424 198 Q428 197 432 200"
+            fill="none" stroke="#a07820" stroke-width="3.5" stroke-linecap="round" opacity="0.24"/>
+      <path d="M432 200 Q446 198 454 206 Q462 214 461 225 Q460 237 450 243 Q438 249 426 247 Q413 244 408 233 Q402 222 406 211 Q410 200 424 198 Q428 197 432 200"
+            fill="none" stroke="#a07820" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+      <!-- spiral ring 4 — innermost -->
+      <path d="M432 207 Q441 206 447 212 Q453 218 452 227 Q451 236 443 241 Q434 246 424 242 Q415 237 414 228 Q413 218 420 212 Q426 207 432 207"
+            fill="none" stroke="#a07820" stroke-width="2.5" stroke-linecap="round" opacity="0.32"/>
+      <path d="M432 207 Q441 206 447 212 Q453 218 452 227 Q451 236 443 241 Q434 246 424 242 Q415 237 414 228 Q413 218 420 212 Q426 207 432 207"
+            fill="none" stroke="#a07820" stroke-width="0.8" stroke-linecap="round" opacity="0.68"/>
+      <!-- eye of spiral -->
+      <ellipse cx="431" cy="222" rx="8" ry="9" fill="#a07820" opacity="0.28"/>
+      <ellipse cx="431" cy="222" rx="4" ry="5" fill="#a07820" opacity="0.42"/>
+
+      <!-- implied organic boundary — very faint -->
+      <path d="M541 206 Q537 180 518 164 Q500 148 474 140 Q452 133 430 133 Q406 133 382 142 Q356 152 340 170 Q322 188 318 210 Q314 234 322 256 Q332 280 352 294 Q374 310 402 316 Q420 320 440 318 Q466 314 488 300 Q510 284 522 260 Q534 236 536 216 Q538 208 541 206 Z"
+            fill="none" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="4 5" opacity="0.4"/>
+
+      <!-- ── NFC TILES (large, in front of each stool toward center) ── -->
+      <!-- East NFC: west of east stool -->
+      <rect x="512" y="202" width="20" height="14" rx="2" fill="none" stroke="#FF2D7F" stroke-width="1" stroke-dasharray="3 2" opacity="0.8"/>
+      <!-- South NFC: north of south stool -->
+      <rect x="424" y="300" width="14" height="20" rx="2" fill="none" stroke="#FF2D7F" stroke-width="1" stroke-dasharray="3 2" opacity="0.8"/>
+      <!-- West NFC: east of west stool -->
+      <rect x="328" y="202" width="20" height="14" rx="2" fill="none" stroke="#FF2D7F" stroke-width="1" stroke-dasharray="3 2" opacity="0.8"/>
+      <!-- North NFC: south of north stool -->
+      <rect x="424" y="108" width="14" height="20" rx="2" fill="none" stroke="#FF2D7F" stroke-width="1" stroke-dasharray="3 2" opacity="0.8"/>
+      <!-- Center NFC: slightly offset -->
+      <rect x="437" y="214" width="14" height="14" rx="2" fill="none" stroke="#FF2D7F" stroke-width="1" stroke-dasharray="3 2" opacity="0.8"/>
+
+      <!-- ── LED UPLIGHTS at stool base (small dots) ── -->
+      <circle cx="541" cy="210" r="5" fill="#2e8c52" opacity="0.35"/>
+      <circle cx="431" cy="320" r="5" fill="#b03030" opacity="0.35"/>
+      <circle cx="321" cy="210" r="5" fill="#888898" opacity="0.35"/>
+      <circle cx="431" cy="100" r="5" fill="#2a44aa" opacity="0.35"/>
+      <circle cx="431" cy="210" r="6" fill="#a07820" opacity="0.4"/>
+
+      <!-- ── STOOLS (top view) ── -->
+      <!-- East · green -->
+      <circle cx="541" cy="210" r="16" fill="#2e8c52" opacity="0.5"/>
+      <circle cx="541" cy="210" r="16" fill="none" stroke="#2e8c52" stroke-width="2"/>
+      <text x="541" y="215" text-anchor="middle" font-family="serif" font-size="14" fill="#1a5c30">東</text>
+
+      <!-- South · red -->
+      <circle cx="431" cy="320" r="16" fill="#b03030" opacity="0.5"/>
+      <circle cx="431" cy="320" r="16" fill="none" stroke="#b03030" stroke-width="2"/>
+      <text x="431" y="325" text-anchor="middle" font-family="serif" font-size="14" fill="#6b1515">南</text>
+
+      <!-- West · white/grey -->
+      <circle cx="321" cy="210" r="16" fill="#c8c8d8" opacity="0.7"/>
+      <circle cx="321" cy="210" r="16" fill="none" stroke="#888898" stroke-width="2"/>
+      <text x="321" y="215" text-anchor="middle" font-family="serif" font-size="14" fill="#444455">西</text>
+
+      <!-- North · blue -->
+      <circle cx="431" cy="100" r="16" fill="#2a44aa" opacity="0.5"/>
+      <circle cx="431" cy="100" r="16" fill="none" stroke="#2a44aa" stroke-width="2"/>
+      <text x="431" y="105" text-anchor="middle" font-family="serif" font-size="14" fill="#0a1a60">北</text>
+
+      <!-- Center · yellow -->
+      <circle cx="431" cy="210" r="18" fill="#a07820" opacity="0.55"/>
+      <circle cx="431" cy="210" r="18" fill="none" stroke="#a07820" stroke-width="2.5"/>
+      <circle cx="431" cy="210" r="24" fill="none" stroke="#a07820" stroke-width="0.7" stroke-dasharray="3 3" opacity="0.4"/>
+      <text x="431" y="215" text-anchor="middle" font-family="serif" font-size="14" fill="#5c3800">中</text>
+
+      <!-- ── RADIUS DIMENSION ── -->
+      <line x1="431" y1="210" x2="541" y2="210" stroke="#1a1714" stroke-width="0.6" stroke-dasharray="4 3" opacity="0.4"/>
+      <text x="486" y="205" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">~73 cm</text>
+
+      <!-- ── LEGEND (right of room) ── -->
+      <text x="700" y="55" font-family="DM Mono,monospace" font-size="8.5" fill="#1a1714" font-weight="500">Legend</text>
+
+      <!-- stool -->
+      <circle cx="708" cy="76" r="7" fill="#a07820" opacity="0.5"/>
+      <circle cx="708" cy="76" r="7" fill="none" stroke="#a07820" stroke-width="1.5"/>
+      <text x="720" y="80" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">stool + fabric wrap</text>
+
+      <!-- NFC tile -->
+      <rect x="702" y="92" width="12" height="9" rx="1.5" fill="none" stroke="#FF2D7F" stroke-width="1" stroke-dasharray="3 2"/>
+      <text x="720" y="100" font-family="DM Mono,monospace" font-size="8" fill="#FF2D7F">large NFC inlay</text>
+
+      <!-- LED uplight -->
+      <circle cx="708" cy="114" r="4" fill="#a07820" opacity="0.35"/>
+      <text x="720" y="118" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">LED uplight (battery)</text>
+
+      <!-- fabric trail -->
+      <line x1="700" y1="131" x2="718" y2="131" stroke="#2e8c52" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+      <line x1="700" y1="131" x2="718" y2="131" stroke="#2e8c52" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+      <text x="720" y="135" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">fabric drifts to center</text>
+
+      <!-- safety line -->
+      <line x1="700" y1="149" x2="718" y2="149" stroke="#FF2D7F" stroke-width="1.2" stroke-dasharray="5 3"/>
+      <text x="720" y="153" font-family="DM Mono,monospace" font-size="8" fill="#FF2D7F">safety boundary</text>
+
+      <!-- ── COMPASS ── -->
+      <text x="431" y="596" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">N (back wall)</text>
+      <text x="431" y="610" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">entrance at south · stair descends south</text>
+
+      <!-- ceiling height note -->
+      <text x="700" y="185" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">Ceiling: 310 cm</text>
+      <text x="700" y="197" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">Group show: self-</text>
+      <text x="700" y="209" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">contained lighting</text>
+
+      <!-- scale bar -->
+      <line x1="700" y1="580" x2="760" y2="580" stroke="#1a1714" stroke-width="1.5"/>
+      <line x1="700" y1="575" x2="700" y2="585" stroke="#1a1714" stroke-width="1"/>
+      <line x1="760" y1="575" x2="760" y2="585" stroke="#1a1714" stroke-width="1"/>
+      <text x="730" y="594" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7a7570">~90 cm</text>
+
+    </svg>
+  </div>
+
+  <!-- SPATIAL NOTE -->
+  <div style="font-size:0.65rem; color:var(--muted); line-height:1.8; margin-bottom:1.5rem;">
+    Stool arrangement contained entirely within upper zone (326 × 328.5 cm). Center stool at geometric center of upper area. Quincunx radius ~73 cm. South stool maintains ~35 cm clearance from staircase safety boundary. Yellow fabric coils in spiral around center stool. Four fabrics drift inward organically, meeting at center confluence. No fabric, cable, or equipment crosses the boundary line.
+  </div>
+</section>
+
+<!-- ARTWORK INFO -->
+<section>
+  <div class="section-label">Artwork Information</div>
+  <div class="meta-grid">
+    <div class="meta-key">Short title</div>
+    <div class="meta-val">Su, Where the Moon Rests</div>
+    <div class="meta-key">Full title</div>
+    <div class="meta-val">One Night the Moon Stayed. That Was Yours.</div>
+    <div class="meta-key">Subtitle</div>
+    <div class="meta-val">Where the Moon Slept</div>
+    <div class="meta-key">Artist</div>
+    <div class="meta-val">Bin Youn · Sound design: Patrick Hartono</div>
+    <div class="meta-key">Year</div>
+    <div class="meta-val">2025–2026</div>
+    <div class="meta-key">Medium</div>
+    <div class="meta-val">Spatial AR installation · WebXR (A-Frame), NFC, fabric, Vietnamese plastic stools, generative pentatonic soundscape</div>
+    <div class="meta-key">Duration</div>
+    <div class="meta-val">Durational · participatory throughout exhibition run</div>
+  </div>
+</section>
+
+<!-- POEM -->
+<section>
+  <div class="section-label">Poem · Placeholder</div>
+  <div class="caption-box">
+    <div class="caption-box-label">To be replaced by artist poem</div>
+    <p>
+      One night among twenty-eight<br>
+      the moon chose this direction.<br>
+      It has been resting here since before you arrived.<br>
+      You always knew which way to sit.
+    </p>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section>
+  <div class="section-label">Material List</div>
+  <ul class="mat-list">
+    <li><span>5 × Vietnamese low plastic stools (ghế nhựa)</span><span class="mat-note">H ~30 cm · locally sourced</span></li>
+    <li><span>1 × 6 m green fabric · East palace · 青龍</span><span class="mat-note">pre-colored · Wood · Jupiter</span></li>
+    <li><span>1 × 6 m red fabric · South palace · 朱雀</span><span class="mat-note">pre-colored · Fire · Mars</span></li>
+    <li><span>1 × 6 m yellow fabric · Center palace · 黃龍</span><span class="mat-note">pre-colored · Earth · Saturn</span></li>
+    <li><span>1 × 6 m white fabric · West palace · 白虎</span><span class="mat-note">pre-colored · Metal · Venus</span></li>
+    <li><span>1 × 6 m blue fabric · North palace · 玄武</span><span class="mat-note">pre-colored · Water · Mercury</span></li>
+    <li><span>5 × large NFC inlay (NTAG215 · 10 × 10 cm loop antenna)</span><span class="mat-note">placed on floor in front of each stool</span></li>
+    <li><span>5 × battery LED puck · palace colors</span><span class="mat-note">uplight at stool base · no wiring</span></li>
+    <li><span>LED strip lights · palace colors · under fabric trails</span><span class="mat-note">battery-powered · self-contained</span></li>
+    <li><span>WebXR Gelora environment · gelora-xr.xyz</span><span class="mat-note">A-Frame · browser-based · existing</span></li>
+    <li><span>Birthdate locator · 二十八宿 mansion calculator</span><span class="mat-note">browser-based · loads via NFC</span></li>
+    <li><span>Generative pentatonic soundscape</span><span class="mat-note">Patrick Hartono · portable speaker</span></li>
+  </ul>
+</section>
+
+<!-- LIGHTING -->
+<section>
+  <div class="section-label">Lighting · Self-Contained · No Gallery Control Required</div>
+  <div class="light-grid">
+    <div class="light-cell">
+      <div class="light-cell-label">Fabric trails · floor</div>
+      <div class="light-cell-val">Thin battery LED strips under each fabric trail. Light diffuses softly through cloth. Five palace colors readable on the floor. No wiring to walls or ceiling.</div>
+    </div>
+    <div class="light-cell">
+      <div class="light-cell-label">Stool uplights</div>
+      <div class="light-cell-val">One small battery LED puck at the base of each stool, aimed upward into the fabric. Stool reads as a soft column of palace color in any ambient condition.</div>
+    </div>
+    <div class="light-cell">
+      <div class="light-cell-label">NFC tile marker</div>
+      <div class="light-cell-val">Small battery LED beneath a thin acrylic square over the NFC inlay. Low glow in palace color marks the activation point without text or signage.</div>
+    </div>
+    <div class="light-cell">
+      <div class="light-cell-label">Group show note</div>
+      <div class="light-cell-val">All lighting is battery-powered and self-contained. No dependency on gallery dimming or control. Works under full gallery light and is enhanced in low ambient conditions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTION -->
+<section>
+  <div class="section-label">Wall Text · Caption</div>
+  <div class="caption-box">
+    <div class="caption-box-label">Exhibition wall text</div>
+    <p>Your birthdate is a celestial address. The ancient system of 二十八宿 divided the night sky into twenty-eight lunar mansions, tracking where the moon lodged each night. Su, where the moon rests. One of those nights was yours. Five Vietnamese low stools mark the four palaces of East Asian astro-cosmology and their shared center, each inhabited by a Gelora: a hybrid being reanimated from fallen flowers, dwelling now in its directional station. Five fabrics in five palace colors drift inward from each stool, gathering and intermingling at center where the yellow cloth coils in a slow spiral. Rest your phone on the tile in front of your seat. Your mansion opens. The Gelora has been waiting in the house the moon keeps for you.</p>
+  </div>
+  <div class="caption-credit">
+    Bin Youn, 2025–2026<br>
+    Spatial AR installation · WebXR (A-Frame), NFC, fabric, Vietnamese plastic stools, generative pentatonic soundscape<br>
+    Sound design: Patrick Hartono · gelora-xr.xyz
+  </div>
+</section>
+
+<!-- SPATIAL REQUIREMENTS -->
+<section>
+  <div class="section-label">Space + Technical Requirements</div>
+  <ul class="mat-list">
+    <li><span>Floor area</span><span class="mat-note">326 × 328.5 cm confirmed · upper zone only</span></li>
+    <li><span>Ceiling height</span><span class="mat-note">310 cm confirmed · sufficient for WebXR</span></li>
+    <li><span>Power</span><span class="mat-note">None required · all battery-powered</span></li>
+    <li><span>Internet / WiFi</span><span class="mat-note">Required for WebXR · mobile data usable as fallback</span></li>
+    <li><span>Installation time</span><span class="mat-note">2–3 hours · no structural modification to space</span></li>
+    <li><span>Staircase clearance</span><span class="mat-note">All materials stay above safety boundary · 35 cm min clearance</span></li>
+    <li><span>Participant requirement</span><span class="mat-note">Smartphone with NFC enabled · iOS 13+ or Android 5+</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div>
+    Bin Youn · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8bab1b681b7adb698aab5b1acf6bdbcadf6aeb6">[email&#160;protected]</a><br>
+    RMIT University Vietnam<br>
+    School of Communication and Design<br>
+    Sound design: Patrick Hartono
+  </div>
+  <div style="tex
